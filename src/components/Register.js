@@ -4,6 +4,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import authService from '../services/authService';
 
 const Register = () => {
+    const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,6 +15,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const response = await authService.register({
+                name,
                 username,
                 email,
                 password,
@@ -30,6 +32,16 @@ const Register = () => {
             <h2>Register</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="name">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                </Form.Group>
                 <Form.Group controlId="formUsername">
                     <Form.Label>Username</Form.Label>
                     <Form.Control

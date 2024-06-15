@@ -1,24 +1,55 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import Products from './components/Products';
+import ProtectedRoute from './components/ProtectedRoute';
+import NavBar from './components/NavBar';
+import RedirectIfAuthenticated from './components/RedirectIfAuthenticated';
+import Cart from "./components/Cart";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div>
+          <NavBar />
+          <Routes>
+            <Route
+                path="/login"
+                element={
+                  <RedirectIfAuthenticated>
+                    <Login />
+                  </RedirectIfAuthenticated>
+                }
+            />
+            <Route
+                path="/register"
+                element={
+                  <RedirectIfAuthenticated>
+                    <Register />
+                  </RedirectIfAuthenticated>
+                }
+            />
+            <Route
+                path="/Products"
+                element={
+                  <ProtectedRoute>
+                    <Products />
+                  </ProtectedRoute>
+                }
+            />
+              <Route
+                  path="/cart"
+                  element={
+                      <ProtectedRoute>
+                          <Cart />
+                      </ProtectedRoute>
+                  }
+              />
+          </Routes>
+        </div>
+      </Router>
   );
 }
 

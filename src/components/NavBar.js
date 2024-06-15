@@ -16,12 +16,12 @@ const NavBar = () => {
         <AppBar position="static">
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Plane Spotter
+                    Gear Up
                 </Typography>
                 {user && (
                     <>
-                        <Button color="inherit" onClick={() => navigate('/AirlineSightings')}>
-                            Airline Sightings
+                        <Button color="inherit" onClick={() => navigate('/Products')}>
+                            Products
                         </Button>
                         <Box sx={{ marginLeft: 'auto' }}>
                             <Button color="inherit" onClick={handleLogout}>

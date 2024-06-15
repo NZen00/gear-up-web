@@ -6,7 +6,7 @@ const RedirectIfAuthenticated = ({ children }) => {
     const user = authService.getCurrentUser();
 
     if (user) {
-        return <Navigate to="/AirlineSightings" />;
+        return <Navigate to="/Products" />;
     }
 
     return children;

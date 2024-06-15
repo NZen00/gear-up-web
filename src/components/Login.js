@@ -15,7 +15,7 @@ const Login = () => {
         try {
             const response = await authService.login({ username, password });
             console.log('Login successful:', response);
-            navigate('/AirlineSightings'); // Redirect after login
+            navigate('/Products'); // Redirect after login
         } catch (err) {
             setError(err);
         }

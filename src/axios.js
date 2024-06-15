@@ -4,7 +4,7 @@ import axios from 'axios';
 import authService from "./services/authService";
 
 const instance = axios.create({
-    baseURL: 'https://localhost:7176/api/',
+    baseURL: 'https://localhost:7050/api/',
 });
 
 instance.interceptors.request.use(
