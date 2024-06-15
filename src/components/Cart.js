@@ -20,7 +20,8 @@ const Cart = () => {
                 }))
             };
 
-            await axios.post(`/order?userId=${cartId}`, orderData);
+            await axios.post(`/Order/${cartId}`, orderData);
+
             console.log('Order placed successfully.');
             navigate('/products');
             // Navigate to a success or order confirmation page if needed
